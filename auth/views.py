@@ -5,5 +5,6 @@ from auth.serializers import UserSerializer
 
 
 class UserRegistrationView(generics.ListCreateAPIView):
+    permission_classes = ['AllowAny',]
     serializer_class = UserSerializer
     queryset = get_user_model().objects
