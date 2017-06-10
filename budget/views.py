@@ -8,11 +8,13 @@ class UserIncomeListView(generics.ListCreateAPIView):
     serializer_class = IncomeSerializer
 
     def get_queryset(self):
-        return Income.objects.filter(user_id=self.kwargs.get('id'))
+        user = self.request.user
+        return Income.objects.filter(user=user)
 
 
 class UserExpenseListView(generics.ListCreateAPIView):
     serializer_class = ExpenseSerializer
 
     def get_queryset(self):
-        return Expense.objects.filter(user_id=self.kwargs.get('id'))
+        user = self.request.user
+        return Expense.objects.filter(user=user)
